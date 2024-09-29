@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/sever.dir/main.cpp.o -o sever  modules/A1/libA1.a modules/A2/libA2.a modules/M1/libM1.a modules/M2/libM2.a common/math/libmath.a modules/A1/libA1.a modules/A2/libA2.a 

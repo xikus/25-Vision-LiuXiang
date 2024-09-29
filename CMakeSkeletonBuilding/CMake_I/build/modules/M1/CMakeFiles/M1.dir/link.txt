@@ -1,0 +1,2 @@
+/usr/bin/ar qc libM1.a CMakeFiles/M1.dir/src/M1.cpp.o
+/usr/bin/ranlib libM1.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libM2.a CMakeFiles/M2.dir/src/M2.cpp.o
+/usr/bin/ranlib libM2.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libA2.a CMakeFiles/A2.dir/src/A2.cpp.o
+/usr/bin/ranlib libA2.a
