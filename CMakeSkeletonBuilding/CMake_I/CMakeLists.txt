@@ -8,9 +8,9 @@ add_subdirectory(modules)  #
 ####### 以上禁止修改 #######
 
 # 在此处生成可执行程序
-add_executable(main main.cpp)
+add_executable(test main.cpp)
 
 # 在此处链接库
-target_link_libraries(main math A1 A2 M1 M2)
+target_link_libraries(test math A1 A2 M1 M2)
 
-target_link_directories(main PUBLIC ${kalman_INCLUDE_DIRS})
+target_link_directories(test PUBLIC ${kalman_INCLUDE_DIRS})
