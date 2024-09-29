@@ -59,7 +59,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/sever.dir/DependInfo.cmake"
+  "CMakeFiles/main.dir/DependInfo.cmake"
   "common/math/CMakeFiles/math.dir/DependInfo.cmake"
   "modules/A1/CMakeFiles/A1.dir/DependInfo.cmake"
   "modules/A2/CMakeFiles/A2.dir/DependInfo.cmake"

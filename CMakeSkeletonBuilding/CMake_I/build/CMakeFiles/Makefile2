@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/b
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/sever.dir/all
+all: CMakeFiles/main.dir/all
 all: common/all
 all: modules/all
 .PHONY : all
@@ -74,7 +74,7 @@ preinstall: modules/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/sever.dir/clean
+clean: CMakeFiles/main.dir/clean
 clean: common/clean
 clean: modules/clean
 .PHONY : clean
@@ -212,34 +212,34 @@ modules/M2/clean: modules/M2/CMakeFiles/M2.dir/clean
 .PHONY : modules/M2/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/sever.dir
+# Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/sever.dir/all: common/math/CMakeFiles/math.dir/all
-CMakeFiles/sever.dir/all: modules/A1/CMakeFiles/A1.dir/all
-CMakeFiles/sever.dir/all: modules/A2/CMakeFiles/A2.dir/all
-CMakeFiles/sever.dir/all: modules/M1/CMakeFiles/M1.dir/all
-CMakeFiles/sever.dir/all: modules/M2/CMakeFiles/M2.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sever.dir/build.make CMakeFiles/sever.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sever.dir/build.make CMakeFiles/sever.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles --progress-num=13,14 "Built target sever"
-.PHONY : CMakeFiles/sever.dir/all
+CMakeFiles/main.dir/all: common/math/CMakeFiles/math.dir/all
+CMakeFiles/main.dir/all: modules/A1/CMakeFiles/A1.dir/all
+CMakeFiles/main.dir/all: modules/A2/CMakeFiles/A2.dir/all
+CMakeFiles/main.dir/all: modules/M1/CMakeFiles/M1.dir/all
+CMakeFiles/main.dir/all: modules/M2/CMakeFiles/M2.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles --progress-num=11,12 "Built target main"
+.PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/sever.dir/rule: cmake_check_build_system
+CMakeFiles/main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles 14
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sever.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles 0
-.PHONY : CMakeFiles/sever.dir/rule
+.PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-sever: CMakeFiles/sever.dir/rule
-.PHONY : sever
+main: CMakeFiles/main.dir/rule
+.PHONY : main
 
 # clean rule for target.
-CMakeFiles/sever.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sever.dir/build.make CMakeFiles/sever.dir/clean
-.PHONY : CMakeFiles/sever.dir/clean
+CMakeFiles/main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
+.PHONY : CMakeFiles/main.dir/clean
 
 #=============================================================================
 # Target rules for target common/math/CMakeFiles/math.dir
@@ -248,7 +248,7 @@ CMakeFiles/sever.dir/clean:
 common/math/CMakeFiles/math.dir/all:
 	$(MAKE) $(MAKESILENT) -f common/math/CMakeFiles/math.dir/build.make common/math/CMakeFiles/math.dir/depend
 	$(MAKE) $(MAKESILENT) -f common/math/CMakeFiles/math.dir/build.make common/math/CMakeFiles/math.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles --progress-num=11,12 "Built target math"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles --progress-num=13,14 "Built target math"
 .PHONY : common/math/CMakeFiles/math.dir/all
 
 # Build rule for subdir invocation for target.
@@ -324,8 +324,6 @@ modules/A2/CMakeFiles/A2.dir/clean:
 
 # All Build rule for target.
 modules/M1/CMakeFiles/M1.dir/all: modules/A1/CMakeFiles/A1.dir/all
-modules/M1/CMakeFiles/M1.dir/all: modules/A2/CMakeFiles/A2.dir/all
-modules/M1/CMakeFiles/M1.dir/all: modules/M2/CMakeFiles/M2.dir/all
 	$(MAKE) $(MAKESILENT) -f modules/M1/CMakeFiles/M1.dir/build.make modules/M1/CMakeFiles/M1.dir/depend
 	$(MAKE) $(MAKESILENT) -f modules/M1/CMakeFiles/M1.dir/build.make modules/M1/CMakeFiles/M1.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles --progress-num=7,8 "Built target M1"
@@ -333,7 +331,7 @@ modules/M1/CMakeFiles/M1.dir/all: modules/M2/CMakeFiles/M2.dir/all
 
 # Build rule for subdir invocation for target.
 modules/M1/CMakeFiles/M1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/M1/CMakeFiles/M1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build/CMakeFiles 0
 .PHONY : modules/M1/CMakeFiles/M1.dir/rule

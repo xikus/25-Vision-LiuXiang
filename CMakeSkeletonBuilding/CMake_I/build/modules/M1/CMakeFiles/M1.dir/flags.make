@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/M1/include -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/M2/include -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/A1/include -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/A2/include
+CXX_INCLUDES = -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/M1/include -I/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/A1/include
 
 CXX_FLAGS = 
 

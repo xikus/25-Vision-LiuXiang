@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Test
+CMAKE_PROJECT_NAME:STATIC=main
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -213,40 +213,22 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 Common_INCLUDE_DIRS:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/include
 
 //Dependencies for the target
-M1_LIB_DEPENDS:STATIC=general;M2;
+M1_LIB_DEPENDS:STATIC=general;A1;
 
 //Dependencies for the target
 M2_LIB_DEPENDS:STATIC=general;A1;general;A2;
 
-//Modules_INCLUDE_DIRS
-Modules_INCLUDE_DIRS:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/modules/include
-
-//The directory containing a CMake configuration file for STD.
-STD_DIR:PATH=STD_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for StandardLibraries.
-StandardLibraries_DIR:PATH=StandardLibraries_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for Std.
-Std_DIR:PATH=Std_DIR-NOTFOUND
-
-//Value Computed by CMake
-Test_BINARY_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build
-
-//Value Computed by CMake
-Test_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Test_SOURCE_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I
-
-//The directory containing a CMake configuration file for cstddefConfig.
-cstddefConfig_DIR:PATH=cstddefConfig_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for cstddef.
-cstddef_DIR:PATH=cstddef_DIR-NOTFOUND
-
 //kalman filter include directories
 kalman_INCLUDE_DIRS:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include
+
+//Value Computed by CMake
+main_BINARY_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build
+
+//Value Computed by CMake
+main_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+main_SOURCE_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I
 
 
 ########################
