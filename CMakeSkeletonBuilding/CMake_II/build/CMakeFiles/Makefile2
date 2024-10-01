@@ -63,49 +63,384 @@ CMAKE_BINARY_DIR = /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/server.dir/all
+all: CMakeFiles/client.dir/all
 all: modules/all
 all: common/all
+all: modules/assembly1/test/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: modules/preinstall
 preinstall: common/preinstall
+preinstall: modules/assembly1/test/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/server.dir/clean
+clean: CMakeFiles/client.dir/clean
 clean: modules/clean
 clean: common/clean
+clean: modules/assembly1/test/clean
 .PHONY : clean
 
 #=============================================================================
 # Directory level rules for directory common
 
 # Recursive "all" directory target.
-common/all:
+common/all: common/rmath/all
+common/all: common/singleton/all
 .PHONY : common/all
 
 # Recursive "preinstall" directory target.
-common/preinstall:
+common/preinstall: common/rmath/preinstall
+common/preinstall: common/singleton/preinstall
 .PHONY : common/preinstall
 
 # Recursive "clean" directory target.
-common/clean:
+common/clean: common/rmath/clean
+common/clean: common/singleton/clean
 .PHONY : common/clean
+
+#=============================================================================
+# Directory level rules for directory common/rmath
+
+# Recursive "all" directory target.
+common/rmath/all: common/rmath/CMakeFiles/rmath.dir/all
+.PHONY : common/rmath/all
+
+# Recursive "preinstall" directory target.
+common/rmath/preinstall:
+.PHONY : common/rmath/preinstall
+
+# Recursive "clean" directory target.
+common/rmath/clean: common/rmath/CMakeFiles/rmath.dir/clean
+.PHONY : common/rmath/clean
+
+#=============================================================================
+# Directory level rules for directory common/singleton
+
+# Recursive "all" directory target.
+common/singleton/all:
+.PHONY : common/singleton/all
+
+# Recursive "preinstall" directory target.
+common/singleton/preinstall:
+.PHONY : common/singleton/preinstall
+
+# Recursive "clean" directory target.
+common/singleton/clean:
+.PHONY : common/singleton/clean
 
 #=============================================================================
 # Directory level rules for directory modules
 
 # Recursive "all" directory target.
-modules/all:
+modules/all: modules/assembly1/all
+modules/all: modules/assembly2/all
+modules/all: modules/module1/all
+modules/all: modules/module2/all
 .PHONY : modules/all
 
 # Recursive "preinstall" directory target.
-modules/preinstall:
+modules/preinstall: modules/assembly1/preinstall
+modules/preinstall: modules/assembly2/preinstall
+modules/preinstall: modules/module1/preinstall
+modules/preinstall: modules/module2/preinstall
 .PHONY : modules/preinstall
 
 # Recursive "clean" directory target.
-modules/clean:
+modules/clean: modules/assembly1/clean
+modules/clean: modules/assembly2/clean
+modules/clean: modules/module1/clean
+modules/clean: modules/module2/clean
 .PHONY : modules/clean
+
+#=============================================================================
+# Directory level rules for directory modules/assembly1
+
+# Recursive "all" directory target.
+modules/assembly1/all: modules/assembly1/CMakeFiles/assembly1.dir/all
+.PHONY : modules/assembly1/all
+
+# Recursive "preinstall" directory target.
+modules/assembly1/preinstall:
+.PHONY : modules/assembly1/preinstall
+
+# Recursive "clean" directory target.
+modules/assembly1/clean: modules/assembly1/CMakeFiles/assembly1.dir/clean
+.PHONY : modules/assembly1/clean
+
+#=============================================================================
+# Directory level rules for directory modules/assembly1/test
+
+# Recursive "all" directory target.
+modules/assembly1/test/all: modules/assembly1/test/CMakeFiles/assembly1_test.dir/all
+.PHONY : modules/assembly1/test/all
+
+# Recursive "preinstall" directory target.
+modules/assembly1/test/preinstall:
+.PHONY : modules/assembly1/test/preinstall
+
+# Recursive "clean" directory target.
+modules/assembly1/test/clean: modules/assembly1/test/CMakeFiles/assembly1_test.dir/clean
+.PHONY : modules/assembly1/test/clean
+
+#=============================================================================
+# Directory level rules for directory modules/assembly2
+
+# Recursive "all" directory target.
+modules/assembly2/all: modules/assembly2/CMakeFiles/assembly2.dir/all
+.PHONY : modules/assembly2/all
+
+# Recursive "preinstall" directory target.
+modules/assembly2/preinstall:
+.PHONY : modules/assembly2/preinstall
+
+# Recursive "clean" directory target.
+modules/assembly2/clean: modules/assembly2/CMakeFiles/assembly2.dir/clean
+.PHONY : modules/assembly2/clean
+
+#=============================================================================
+# Directory level rules for directory modules/module1
+
+# Recursive "all" directory target.
+modules/module1/all: modules/module1/CMakeFiles/module1.dir/all
+.PHONY : modules/module1/all
+
+# Recursive "preinstall" directory target.
+modules/module1/preinstall:
+.PHONY : modules/module1/preinstall
+
+# Recursive "clean" directory target.
+modules/module1/clean: modules/module1/CMakeFiles/module1.dir/clean
+.PHONY : modules/module1/clean
+
+#=============================================================================
+# Directory level rules for directory modules/module2
+
+# Recursive "all" directory target.
+modules/module2/all: modules/module2/CMakeFiles/module2.dir/all
+.PHONY : modules/module2/all
+
+# Recursive "preinstall" directory target.
+modules/module2/preinstall:
+.PHONY : modules/module2/preinstall
+
+# Recursive "clean" directory target.
+modules/module2/clean: modules/module2/CMakeFiles/module2.dir/clean
+.PHONY : modules/module2/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/server.dir
+
+# All Build rule for target.
+CMakeFiles/server.dir/all: modules/assembly2/CMakeFiles/assembly2.dir/all
+CMakeFiles/server.dir/all: modules/module1/CMakeFiles/module1.dir/all
+CMakeFiles/server.dir/all: modules/module2/CMakeFiles/module2.dir/all
+CMakeFiles/server.dir/all: common/rmath/CMakeFiles/rmath.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=24,25 "Built target server"
+.PHONY : CMakeFiles/server.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 19
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/server.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : CMakeFiles/server.dir/rule
+
+# Convenience name for target.
+server: CMakeFiles/server.dir/rule
+.PHONY : server
+
+# clean rule for target.
+CMakeFiles/server.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/clean
+.PHONY : CMakeFiles/server.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/client.dir
+
+# All Build rule for target.
+CMakeFiles/client.dir/all: modules/module2/CMakeFiles/module2.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=7,8 "Built target client"
+.PHONY : CMakeFiles/client.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : CMakeFiles/client.dir/rule
+
+# Convenience name for target.
+client: CMakeFiles/client.dir/rule
+.PHONY : client
+
+# clean rule for target.
+CMakeFiles/client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/clean
+.PHONY : CMakeFiles/client.dir/clean
+
+#=============================================================================
+# Target rules for target modules/assembly1/CMakeFiles/assembly1.dir
+
+# All Build rule for target.
+modules/assembly1/CMakeFiles/assembly1.dir/all:
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/CMakeFiles/assembly1.dir/build.make modules/assembly1/CMakeFiles/assembly1.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/CMakeFiles/assembly1.dir/build.make modules/assembly1/CMakeFiles/assembly1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=1,2 "Built target assembly1"
+.PHONY : modules/assembly1/CMakeFiles/assembly1.dir/all
+
+# Build rule for subdir invocation for target.
+modules/assembly1/CMakeFiles/assembly1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/assembly1/CMakeFiles/assembly1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : modules/assembly1/CMakeFiles/assembly1.dir/rule
+
+# Convenience name for target.
+assembly1: modules/assembly1/CMakeFiles/assembly1.dir/rule
+.PHONY : assembly1
+
+# clean rule for target.
+modules/assembly1/CMakeFiles/assembly1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/CMakeFiles/assembly1.dir/build.make modules/assembly1/CMakeFiles/assembly1.dir/clean
+.PHONY : modules/assembly1/CMakeFiles/assembly1.dir/clean
+
+#=============================================================================
+# Target rules for target modules/assembly2/CMakeFiles/assembly2.dir
+
+# All Build rule for target.
+modules/assembly2/CMakeFiles/assembly2.dir/all:
+	$(MAKE) $(MAKESILENT) -f modules/assembly2/CMakeFiles/assembly2.dir/build.make modules/assembly2/CMakeFiles/assembly2.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/assembly2/CMakeFiles/assembly2.dir/build.make modules/assembly2/CMakeFiles/assembly2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=5,6 "Built target assembly2"
+.PHONY : modules/assembly2/CMakeFiles/assembly2.dir/all
+
+# Build rule for subdir invocation for target.
+modules/assembly2/CMakeFiles/assembly2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/assembly2/CMakeFiles/assembly2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : modules/assembly2/CMakeFiles/assembly2.dir/rule
+
+# Convenience name for target.
+assembly2: modules/assembly2/CMakeFiles/assembly2.dir/rule
+.PHONY : assembly2
+
+# clean rule for target.
+modules/assembly2/CMakeFiles/assembly2.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/assembly2/CMakeFiles/assembly2.dir/build.make modules/assembly2/CMakeFiles/assembly2.dir/clean
+.PHONY : modules/assembly2/CMakeFiles/assembly2.dir/clean
+
+#=============================================================================
+# Target rules for target modules/module1/CMakeFiles/module1.dir
+
+# All Build rule for target.
+modules/module1/CMakeFiles/module1.dir/all: modules/assembly2/CMakeFiles/assembly2.dir/all
+	$(MAKE) $(MAKESILENT) -f modules/module1/CMakeFiles/module1.dir/build.make modules/module1/CMakeFiles/module1.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/module1/CMakeFiles/module1.dir/build.make modules/module1/CMakeFiles/module1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=9,10,11,12,13,14 "Built target module1"
+.PHONY : modules/module1/CMakeFiles/module1.dir/all
+
+# Build rule for subdir invocation for target.
+modules/module1/CMakeFiles/module1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 8
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/module1/CMakeFiles/module1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : modules/module1/CMakeFiles/module1.dir/rule
+
+# Convenience name for target.
+module1: modules/module1/CMakeFiles/module1.dir/rule
+.PHONY : module1
+
+# clean rule for target.
+modules/module1/CMakeFiles/module1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/module1/CMakeFiles/module1.dir/build.make modules/module1/CMakeFiles/module1.dir/clean
+.PHONY : modules/module1/CMakeFiles/module1.dir/clean
+
+#=============================================================================
+# Target rules for target modules/module2/CMakeFiles/module2.dir
+
+# All Build rule for target.
+modules/module2/CMakeFiles/module2.dir/all:
+	$(MAKE) $(MAKESILENT) -f modules/module2/CMakeFiles/module2.dir/build.make modules/module2/CMakeFiles/module2.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/module2/CMakeFiles/module2.dir/build.make modules/module2/CMakeFiles/module2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=15,16,17,18,19,20,21 "Built target module2"
+.PHONY : modules/module2/CMakeFiles/module2.dir/all
+
+# Build rule for subdir invocation for target.
+modules/module2/CMakeFiles/module2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/module2/CMakeFiles/module2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : modules/module2/CMakeFiles/module2.dir/rule
+
+# Convenience name for target.
+module2: modules/module2/CMakeFiles/module2.dir/rule
+.PHONY : module2
+
+# clean rule for target.
+modules/module2/CMakeFiles/module2.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/module2/CMakeFiles/module2.dir/build.make modules/module2/CMakeFiles/module2.dir/clean
+.PHONY : modules/module2/CMakeFiles/module2.dir/clean
+
+#=============================================================================
+# Target rules for target common/rmath/CMakeFiles/rmath.dir
+
+# All Build rule for target.
+common/rmath/CMakeFiles/rmath.dir/all:
+	$(MAKE) $(MAKESILENT) -f common/rmath/CMakeFiles/rmath.dir/build.make common/rmath/CMakeFiles/rmath.dir/depend
+	$(MAKE) $(MAKESILENT) -f common/rmath/CMakeFiles/rmath.dir/build.make common/rmath/CMakeFiles/rmath.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=22,23 "Built target rmath"
+.PHONY : common/rmath/CMakeFiles/rmath.dir/all
+
+# Build rule for subdir invocation for target.
+common/rmath/CMakeFiles/rmath.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/rmath/CMakeFiles/rmath.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : common/rmath/CMakeFiles/rmath.dir/rule
+
+# Convenience name for target.
+rmath: common/rmath/CMakeFiles/rmath.dir/rule
+.PHONY : rmath
+
+# clean rule for target.
+common/rmath/CMakeFiles/rmath.dir/clean:
+	$(MAKE) $(MAKESILENT) -f common/rmath/CMakeFiles/rmath.dir/build.make common/rmath/CMakeFiles/rmath.dir/clean
+.PHONY : common/rmath/CMakeFiles/rmath.dir/clean
+
+#=============================================================================
+# Target rules for target modules/assembly1/test/CMakeFiles/assembly1_test.dir
+
+# All Build rule for target.
+modules/assembly1/test/CMakeFiles/assembly1_test.dir/all: modules/assembly1/CMakeFiles/assembly1.dir/all
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/test/CMakeFiles/assembly1_test.dir/build.make modules/assembly1/test/CMakeFiles/assembly1_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/test/CMakeFiles/assembly1_test.dir/build.make modules/assembly1/test/CMakeFiles/assembly1_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles --progress-num=3,4 "Built target assembly1_test"
+.PHONY : modules/assembly1/test/CMakeFiles/assembly1_test.dir/all
+
+# Build rule for subdir invocation for target.
+modules/assembly1/test/CMakeFiles/assembly1_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modules/assembly1/test/CMakeFiles/assembly1_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/build/CMakeFiles 0
+.PHONY : modules/assembly1/test/CMakeFiles/assembly1_test.dir/rule
+
+# Convenience name for target.
+assembly1_test: modules/assembly1/test/CMakeFiles/assembly1_test.dir/rule
+.PHONY : assembly1_test
+
+# clean rule for target.
+modules/assembly1/test/CMakeFiles/assembly1_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/test/CMakeFiles/assembly1_test.dir/build.make modules/assembly1/test/CMakeFiles/assembly1_test.dir/clean
+.PHONY : modules/assembly1/test/CMakeFiles/assembly1_test.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

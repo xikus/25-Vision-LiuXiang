@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/assembly1_test.dir/assembly1_test.cpp.o -o assembly1_test  ../libassembly1.a 

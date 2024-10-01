@@ -65,10 +65,20 @@ CMAKE_BINARY_DIR = /home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_II/
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -116,6 +126,158 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named server
+
+# Build rule for target.
+server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 server
+.PHONY : server
+
+# fast build rule for target.
+server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+.PHONY : server/fast
+
+#=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+#=============================================================================
+# Target rules for targets named assembly1
+
+# Build rule for target.
+assembly1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assembly1
+.PHONY : assembly1
+
+# fast build rule for target.
+assembly1/fast:
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/CMakeFiles/assembly1.dir/build.make modules/assembly1/CMakeFiles/assembly1.dir/build
+.PHONY : assembly1/fast
+
+#=============================================================================
+# Target rules for targets named assembly2
+
+# Build rule for target.
+assembly2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assembly2
+.PHONY : assembly2
+
+# fast build rule for target.
+assembly2/fast:
+	$(MAKE) $(MAKESILENT) -f modules/assembly2/CMakeFiles/assembly2.dir/build.make modules/assembly2/CMakeFiles/assembly2.dir/build
+.PHONY : assembly2/fast
+
+#=============================================================================
+# Target rules for targets named module1
+
+# Build rule for target.
+module1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 module1
+.PHONY : module1
+
+# fast build rule for target.
+module1/fast:
+	$(MAKE) $(MAKESILENT) -f modules/module1/CMakeFiles/module1.dir/build.make modules/module1/CMakeFiles/module1.dir/build
+.PHONY : module1/fast
+
+#=============================================================================
+# Target rules for targets named module2
+
+# Build rule for target.
+module2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 module2
+.PHONY : module2
+
+# fast build rule for target.
+module2/fast:
+	$(MAKE) $(MAKESILENT) -f modules/module2/CMakeFiles/module2.dir/build.make modules/module2/CMakeFiles/module2.dir/build
+.PHONY : module2/fast
+
+#=============================================================================
+# Target rules for targets named rmath
+
+# Build rule for target.
+rmath: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rmath
+.PHONY : rmath
+
+# fast build rule for target.
+rmath/fast:
+	$(MAKE) $(MAKESILENT) -f common/rmath/CMakeFiles/rmath.dir/build.make common/rmath/CMakeFiles/rmath.dir/build
+.PHONY : rmath/fast
+
+#=============================================================================
+# Target rules for targets named assembly1_test
+
+# Build rule for target.
+assembly1_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assembly1_test
+.PHONY : assembly1_test
+
+# fast build rule for target.
+assembly1_test/fast:
+	$(MAKE) $(MAKESILENT) -f modules/assembly1/test/CMakeFiles/assembly1_test.dir/build.make modules/assembly1/test/CMakeFiles/assembly1_test.dir/build
+.PHONY : assembly1_test/fast
+
+client.o: client.cpp.o
+.PHONY : client.o
+
+# target to build an object file
+client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.o
+.PHONY : client.cpp.o
+
+client.i: client.cpp.i
+.PHONY : client.i
+
+# target to preprocess a source file
+client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.i
+.PHONY : client.cpp.i
+
+client.s: client.cpp.s
+.PHONY : client.s
+
+# target to generate assembly for a file
+client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.s
+.PHONY : client.cpp.s
+
+server.o: server.cpp.o
+.PHONY : server.o
+
+# target to build an object file
+server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server.cpp.o
+.PHONY : server.cpp.o
+
+server.i: server.cpp.i
+.PHONY : server.i
+
+# target to preprocess a source file
+server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server.cpp.i
+.PHONY : server.cpp.i
+
+server.s: server.cpp.s
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server.cpp.s
+.PHONY : server.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -124,6 +286,21 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... assembly1"
+	@echo "... assembly1_test"
+	@echo "... assembly2"
+	@echo "... client"
+	@echo "... module1"
+	@echo "... module2"
+	@echo "... rmath"
+	@echo "... server"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
 .PHONY : help
 
 

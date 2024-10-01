@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=main
+CMAKE_PROJECT_NAME:STATIC=Test
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -217,6 +217,18 @@ M1_LIB_DEPENDS:STATIC=general;A1;
 
 //Dependencies for the target
 M2_LIB_DEPENDS:STATIC=general;A1;general;A2;
+
+//Value Computed by CMake
+Test_BINARY_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build
+
+//Value Computed by CMake
+Test_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Test_SOURCE_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I
+
+//kalman filter include directories
+kalman:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include
 
 //kalman filter include directories
 kalman_INCLUDE_DIRS:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include

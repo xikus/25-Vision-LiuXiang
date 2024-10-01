@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/server.dir/server.cpp.o -o server  common/rmath/librmath.a modules/module1/libmodule1.a modules/module2/libmodule2.a modules/assembly2/libassembly2.a -lpthread 

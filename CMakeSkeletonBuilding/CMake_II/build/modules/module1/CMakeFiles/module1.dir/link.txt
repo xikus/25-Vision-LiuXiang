@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmodule1.a CMakeFiles/module1.dir/src/module1a/m1.cpp.o CMakeFiles/module1.dir/src/module1a/m2.cpp.o CMakeFiles/module1.dir/src/module1a/m3.cpp.o CMakeFiles/module1.dir/src/module1a/m4.cpp.o CMakeFiles/module1.dir/src/module1b/module1b.cpp.o
+/usr/bin/ranlib libmodule1.a

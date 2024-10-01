@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmodule2.a CMakeFiles/module2.dir/src/argument.cpp.o CMakeFiles/module2.dir/src/client.cpp.o CMakeFiles/module2.dir/src/object.cpp.o CMakeFiles/module2.dir/src/open62541.c.o CMakeFiles/module2.dir/src/server.cpp.o CMakeFiles/module2.dir/src/variable.cpp.o
+/usr/bin/ranlib libmodule2.a
