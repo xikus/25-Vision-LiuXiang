@@ -1,0 +1,2 @@
+/usr/bin/ar qc libml.a CMakeFiles/ml.dir/src/ort/ort.cpp.o CMakeFiles/ml.dir/src/ort/ort_print.cpp.o
+/usr/bin/ranlib libml.a

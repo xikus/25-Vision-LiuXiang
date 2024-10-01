@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfilter.a CMakeFiles/filter.dir/src/fitsine.cpp.o
+/usr/bin/ranlib libfilter.a

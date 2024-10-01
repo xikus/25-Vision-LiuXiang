@@ -1,0 +1,2 @@
+/usr/bin/ar qc libimgproc.a CMakeFiles/imgproc.dir/src/pretreat.cpp.o
+/usr/bin/ranlib libimgproc.a

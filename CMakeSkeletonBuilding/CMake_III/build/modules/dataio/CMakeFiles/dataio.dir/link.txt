@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdataio.a CMakeFiles/dataio.dir/src/dataio.cpp.o
+/usr/bin/ranlib libdataio.a

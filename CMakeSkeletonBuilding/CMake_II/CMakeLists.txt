@@ -29,14 +29,14 @@ endif()
 # # # # 以上内容禁止修改 # # # #
 
 if(BUILD_A)
-add_definitions(-DWITH_A)
+    add_definitions(-DWITH_A)
 endif()
 
 if(BUILD_B)
-add_definitions(-DWITH_B)
+    add_definitions(-DWITH_B)
 endif()
 
-message(STATUS "ASSEMBLY1_TEST variable: ${ASSEMBLY1_TEST}")
+# message(STATUS "ASSEMBLY1_TEST variable: ${ASSEMBLY1_TEST}")
 add_subdirectory(${ASSEMBLY1_TEST})
 
 
