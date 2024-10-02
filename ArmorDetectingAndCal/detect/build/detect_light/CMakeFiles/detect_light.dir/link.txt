@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdetect_light.a CMakeFiles/detect_light.dir/src/detect_light.cpp.o
+/usr/bin/ranlib libdetect_light.a

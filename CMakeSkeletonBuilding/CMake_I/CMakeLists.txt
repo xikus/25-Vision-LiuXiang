@@ -14,4 +14,4 @@ add_executable(test main.cpp)
 # 在此处链接库
 target_link_libraries(test math A1 A2 M1 M2)
 
-target_link_directories(test PUBLIC ${kalman})
+target_include_directories(test PUBLIC ${kalman})

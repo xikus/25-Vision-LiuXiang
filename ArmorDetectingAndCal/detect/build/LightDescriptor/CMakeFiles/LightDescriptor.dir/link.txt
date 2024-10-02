@@ -1,0 +1,2 @@
+/usr/bin/ar qc libLightDescriptor.a CMakeFiles/LightDescriptor.dir/src/LightDescriptor.cpp.o
+/usr/bin/ranlib libLightDescriptor.a
