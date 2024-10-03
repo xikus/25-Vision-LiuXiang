@@ -344,4 +344,5 @@ CMakeFiles/test.dir/test_light_descriptor.cpp.o: \
  /usr/local/include/opencv4/opencv2/video/tracking.hpp \
  /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
  /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/LightDescriptor/include/LightDescriptor.h \
- /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/detect_light/include/detect_light.h
+ /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/detect_light/include/detect_light.h \
+ /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/match_light/include/match_light.h

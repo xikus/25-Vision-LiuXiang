@@ -5,11 +5,11 @@
 using namespace cv;
 using namespace std;
 
-int light_min_area = 100;//灯条最小面积
+int light_min_area = 60;//灯条最小面积
 double light_max_angle = 45.0;//灯条最大的倾斜角
-double light_min_size = 5.0;
+double light_min_size = 5.0;//灯条最小尺寸
 double light_contour_min_solidity = 0.5;//灯条最小凸度 注：凸度=轮廓面积/外接矩形面积
-double light_max_ratio = 0.4;//灯条最大长宽比
+double light_max_ratio = 0.9;//灯条最大长宽比
 
 EnemyColor _enemy_color = BLUE;
 

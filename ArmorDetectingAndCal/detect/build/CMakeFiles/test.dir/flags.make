@@ -4,7 +4,7 @@
 # compile CXX with g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/detect_light/include -I/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/LightDescriptor/include -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/detect_light/include -I/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/LightDescriptor/include -I/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/match_light/include -isystem /usr/local/include/opencv4
 
 CXX_FLAGS = -std=gnu++11
 

@@ -7,3 +7,6 @@
 /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/LightDescriptor/CMakeFiles/LightDescriptor.dir
 /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/LightDescriptor/CMakeFiles/edit_cache.dir
 /home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/LightDescriptor/CMakeFiles/rebuild_cache.dir
+/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/match_light/CMakeFiles/match_light.dir
+/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/match_light/CMakeFiles/edit_cache.dir
+/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/match_light/CMakeFiles/rebuild_cache.dir

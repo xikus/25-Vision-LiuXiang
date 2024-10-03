@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmatch_light.a CMakeFiles/match_light.dir/src/match_light.cpp.o
+/usr/bin/ranlib libmatch_light.a

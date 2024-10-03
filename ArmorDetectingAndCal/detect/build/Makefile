@@ -155,6 +155,19 @@ LightDescriptor/fast:
 	$(MAKE) $(MAKESILENT) -f LightDescriptor/CMakeFiles/LightDescriptor.dir/build.make LightDescriptor/CMakeFiles/LightDescriptor.dir/build
 .PHONY : LightDescriptor/fast
 
+#=============================================================================
+# Target rules for targets named match_light
+
+# Build rule for target.
+match_light: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 match_light
+.PHONY : match_light
+
+# fast build rule for target.
+match_light/fast:
+	$(MAKE) $(MAKESILENT) -f match_light/CMakeFiles/match_light.dir/build.make match_light/CMakeFiles/match_light.dir/build
+.PHONY : match_light/fast
+
 test_light_descriptor.o: test_light_descriptor.cpp.o
 .PHONY : test_light_descriptor.o
 
@@ -189,6 +202,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... LightDescriptor"
 	@echo "... detect_light"
+	@echo "... match_light"
 	@echo "... test"
 	@echo "... test_light_descriptor.o"
 	@echo "... test_light_descriptor.i"

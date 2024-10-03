@@ -94,6 +94,7 @@ test: CMakeFiles/test.dir/test_light_descriptor.cpp.o
 test: CMakeFiles/test.dir/build.make
 test: detect_light/libdetect_light.a
 test: LightDescriptor/libLightDescriptor.a
+test: match_light/libmatch_light.a
 test: /usr/local/lib/libopencv_gapi.so.4.10.0
 test: /usr/local/lib/libopencv_highgui.so.4.10.0
 test: /usr/local/lib/libopencv_ml.so.4.10.0
@@ -102,6 +103,7 @@ test: /usr/local/lib/libopencv_photo.so.4.10.0
 test: /usr/local/lib/libopencv_stitching.so.4.10.0
 test: /usr/local/lib/libopencv_video.so.4.10.0
 test: /usr/local/lib/libopencv_videoio.so.4.10.0
+test: LightDescriptor/libLightDescriptor.a
 test: /usr/local/lib/libopencv_imgcodecs.so.4.10.0
 test: /usr/local/lib/libopencv_dnn.so.4.10.0
 test: /usr/local/lib/libopencv_calib3d.so.4.10.0

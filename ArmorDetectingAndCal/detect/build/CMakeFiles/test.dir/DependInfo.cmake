@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/detect_light/CMakeFiles/detect_light.dir/DependInfo.cmake"
   "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/LightDescriptor/CMakeFiles/LightDescriptor.dir/DependInfo.cmake"
+  "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/match_light/CMakeFiles/match_light.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

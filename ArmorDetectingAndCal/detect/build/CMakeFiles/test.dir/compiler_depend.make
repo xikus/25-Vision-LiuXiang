@@ -403,8 +403,11 @@ CMakeFiles/test.dir/test_light_descriptor.cpp.o: ../test_light_descriptor.cpp \
   /usr/local/include/opencv4/opencv2/video/tracking.hpp \
   /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
   ../LightDescriptor/include/LightDescriptor.h \
-  ../detect_light/include/detect_light.h
+  ../detect_light/include/detect_light.h \
+  ../match_light/include/match_light.h
 
+
+../match_light/include/match_light.h:
 
 ../detect_light/include/detect_light.h:
 

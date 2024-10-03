@@ -46,6 +46,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/detect_light/cmake_install.cmake")
   include("/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/LightDescriptor/cmake_install.cmake")
+  include("/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/match_light/cmake_install.cmake")
 
 endif()
 

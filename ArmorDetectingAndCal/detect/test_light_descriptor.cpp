@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include "LightDescriptor.h"
 #include "detect_light.h"
+#include "match_light.h"
 
 using namespace cv;
 using namespace std;
@@ -12,7 +13,8 @@ int main()
     Mat brightImg, grayImg, showImg;
     vector<vector<Point> > lightContours;
     vector<LightDescriptor> lightInfos;
-    
+    vector<vector<int>> armorInfos;
+
     //读取视频并采样
     string videoPath = "/home/yoda/Downloads/zimiao_test.mp4";
     VideoCapture cap(videoPath);
@@ -38,18 +40,21 @@ int main()
 
         //筛选灯条
         filterContours(lightContours, lightInfos);
+        matchLight(lightInfos, armorInfos);
 
         //绘制图片
-        showImg = frame.clone();
+        showImg = frame.clone();;
 
         paintContours(showImg, lightInfos);
-
+        drawArmor(armorInfos, lightInfos, showImg);
+        
         //显示处理后的视频
-        imshow("contours", showImg);
+        imshow("armor", showImg);
         waitKey(50);
 
         //lightInfos清零
         lightInfos.clear();
+        armorInfos.clear();
     }
 
     return 0;

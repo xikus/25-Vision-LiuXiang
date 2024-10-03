@@ -8,12 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/test_light_descriptor.cpp" "CMakeFiles/detect_test.dir/test_light_descriptor.cpp.o" "gcc" "CMakeFiles/detect_test.dir/test_light_descriptor.cpp.o.d"
+  "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/match_light/src/match_light.cpp" "match_light/CMakeFiles/match_light.dir/src/match_light.cpp.o" "gcc" "match_light/CMakeFiles/match_light.dir/src/match_light.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/detect_light/CMakeFiles/detect_light.dir/DependInfo.cmake"
   "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/build/LightDescriptor/CMakeFiles/LightDescriptor.dir/DependInfo.cmake"
   )
 
