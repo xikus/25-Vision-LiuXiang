@@ -743,6 +743,9 @@
 		},
 		{
 			"path" : "match_light/CMakeLists.txt"
+		},
+		{
+			"path" : "calculate/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

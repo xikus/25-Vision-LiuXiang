@@ -26,19 +26,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 36,
+				"line" : 37,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 38,
+				"line" : 39,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 34,
+				"line" : 35,
 				"parent" : 0
 			}
 		]
@@ -65,6 +65,10 @@
 				{
 					"backtrace" : 2,
 					"path" : "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/match_light/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/calculate/include"
 				},
 				{
 					"backtrace" : 3,
@@ -100,6 +104,10 @@
 		{
 			"backtrace" : 2,
 			"id" : "match_light::@50ad63951185f123d59c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "cal::@de7e991939aab4d83ef0"
 		}
 	],
 	"id" : "test::@6890427a1f51a3e7e1df",
@@ -128,6 +136,11 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "match_light/libmatch_light.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "calculate/libcal.a",
 				"role" : "libraries"
 			},
 			{

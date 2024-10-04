@@ -8,3 +8,4 @@ using namespace cv;
 
 void matchLight(vector<LightDescriptor>& lightInfos, vector<vector<int>>& armorInfos);
 void drawArmor(const vector<vector<int>>& armorInfos, const vector<LightDescriptor>& lightInfos, Mat& src);
+vector<vector<Point2f>> getArmorVertex(const vector<vector<int>>& armorInfos, const vector<LightDescriptor>& lightInfos);

@@ -10,7 +10,8 @@
 					[
 						1,
 						2,
-						3
+						3,
+						4
 					],
 					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
@@ -21,7 +22,7 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				},
 				{
@@ -36,7 +37,7 @@
 					"source" : "detect_light",
 					"targetIndexes" : 
 					[
-						1
+						2
 					]
 				},
 				{
@@ -66,7 +67,22 @@
 					"source" : "match_light",
 					"targetIndexes" : 
 					[
-						2
+						3
+					]
+				},
+				{
+					"build" : "calculate",
+					"jsonFile" : "directory-calculate-071ec6b3582ac5ae7cf7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "calculate",
+					"targetIndexes" : 
+					[
+						1
 					]
 				}
 			],
@@ -79,7 +95,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					],
 					"name" : "test",
 					"targetIndexes" : 
@@ -87,7 +104,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -98,6 +116,13 @@
 					"id" : "LightDescriptor::@13da3b234a5296884af5",
 					"jsonFile" : "target-LightDescriptor-ae0aabd73792099621c6.json",
 					"name" : "LightDescriptor",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "cal::@de7e991939aab4d83ef0",
+					"jsonFile" : "target-cal-115861d877da56569818.json",
+					"name" : "cal",
 					"projectIndex" : 0
 				},
 				{
@@ -117,7 +142,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test-8a84d677aa0374276906.json",
+					"jsonFile" : "target-test-3b57c3bf2449d7a69fa0.json",
 					"name" : "test",
 					"projectIndex" : 0
 				}

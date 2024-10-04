@@ -168,6 +168,19 @@ match_light/fast:
 	$(MAKE) $(MAKESILENT) -f match_light/CMakeFiles/match_light.dir/build.make match_light/CMakeFiles/match_light.dir/build
 .PHONY : match_light/fast
 
+#=============================================================================
+# Target rules for targets named cal
+
+# Build rule for target.
+cal: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cal
+.PHONY : cal
+
+# fast build rule for target.
+cal/fast:
+	$(MAKE) $(MAKESILENT) -f calculate/CMakeFiles/cal.dir/build.make calculate/CMakeFiles/cal.dir/build
+.PHONY : cal/fast
+
 test_light_descriptor.o: test_light_descriptor.cpp.o
 .PHONY : test_light_descriptor.o
 
@@ -201,6 +214,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... LightDescriptor"
+	@echo "... cal"
 	@echo "... detect_light"
 	@echo "... match_light"
 	@echo "... test"

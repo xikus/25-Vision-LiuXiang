@@ -95,6 +95,7 @@ test: CMakeFiles/test.dir/build.make
 test: detect_light/libdetect_light.a
 test: LightDescriptor/libLightDescriptor.a
 test: match_light/libmatch_light.a
+test: calculate/libcal.a
 test: /usr/local/lib/libopencv_gapi.so.4.10.0
 test: /usr/local/lib/libopencv_highgui.so.4.10.0
 test: /usr/local/lib/libopencv_ml.so.4.10.0

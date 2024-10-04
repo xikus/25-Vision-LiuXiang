@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
+  "../calculate/CMakeLists.txt"
   "../detect_light/CMakeLists.txt"
   "../match_light/CMakeLists.txt"
   "/usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake"
@@ -126,6 +127,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "detect_light/CMakeFiles/CMakeDirectoryInformation.cmake"
   "LightDescriptor/CMakeFiles/CMakeDirectoryInformation.cmake"
   "match_light/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "calculate/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -134,4 +136,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "detect_light/CMakeFiles/detect_light.dir/DependInfo.cmake"
   "LightDescriptor/CMakeFiles/LightDescriptor.dir/DependInfo.cmake"
   "match_light/CMakeFiles/match_light.dir/DependInfo.cmake"
+  "calculate/CMakeFiles/cal.dir/DependInfo.cmake"
   )

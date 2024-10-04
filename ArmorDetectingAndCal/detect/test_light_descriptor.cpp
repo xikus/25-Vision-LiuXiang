@@ -3,9 +3,28 @@
 #include "LightDescriptor.h"
 #include "detect_light.h"
 #include "match_light.h"
+#include "calculate.h"
 
 using namespace cv;
 using namespace std;
+
+const std::vector<cv::Point3f> truepoints_little = {
+                                            cv::Point3f(-0.0675,0.03125,0),
+                                            cv::Point3f(-0.0675,-0.03125,0),
+                                            cv::Point3f(0.0675,-0.03125,0),
+                                            cv::Point3f(0.0675,0.03125,0)
+};
+
+const std::vector<cv::Point3f> truepoints_big = {
+                                    cv::Point3f(-0.115,0.03125,0),
+                                    cv::Point3f(-0.115,-0.03125,0),
+                                    cv::Point3f(0.115,-0.03125,0),
+                                    cv::Point3f(0.115,0.03125,0)
+};
+
+const Mat intrinsic_matrix = (Mat_<float>(3, 3) << 1.3859739625395162e+03, 0., 9.3622464596653492e+02, 0., 1.3815353250336800e+03, 4.9459467170828475e+02, 0., 0., 1.);
+
+const Mat dist_coeffs = (Mat_<float>(1, 5) << 0.000000, 0.000000, 0.000000, 0.000000, 0.000000);
 
 
 int main()
@@ -14,9 +33,11 @@ int main()
     vector<vector<Point> > lightContours;
     vector<LightDescriptor> lightInfos;
     vector<vector<int>> armorInfos;
+    Mat translation_matrix, rotation_matrix;
 
     //读取视频并采样
     string videoPath = "/home/yoda/Downloads/zimiao_test.mp4";
+    //VideoWriter wrdist_coeffster("/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/test1.mp4", 0x7634706d, 20, Size(1080, 754), true);
     VideoCapture cap(videoPath);
     if (!cap.isOpened())
     {
@@ -43,14 +64,23 @@ int main()
         matchLight(lightInfos, armorInfos);
 
         //绘制图片
-        showImg = frame.clone();;
-
+        showImg = frame.clone();
+        
         paintContours(showImg, lightInfos);
         drawArmor(armorInfos, lightInfos, showImg);
-        
+
+        vector<vector<Point2f>> Armors = getArmorVertex(armorInfos, lightInfos);
+        for (int i = 0; i < Armors.size(); i++)
+        {
+            solvePnP(truepoints_little, Armors[i], intrinsic_matrix, dist_coeffs, rotation_matrix, translation_matrix);
+            float dist = getDist(translation_matrix);
+            drawDist(showImg, dist, Armors[i][0]);
+        }
+
         //显示处理后的视频
         imshow("armor", showImg);
         waitKey(50);
+        //writer.write(showImg);
 
         //lightInfos清零
         lightInfos.clear();

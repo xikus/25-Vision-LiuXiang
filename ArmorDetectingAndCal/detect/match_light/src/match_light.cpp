@@ -7,13 +7,13 @@
 using namespace std;
 using namespace cv;
 
-float light_max_angle_diff_ = 10; //灯条最大角度差
+float light_max_angle_diff_ = 6; //灯条最大角度差10
 float light_max_height_diff_ratio_ = 0.8; //灯条最大高度差比率
 float light_max_y_diff_ratio_ = 1.2; //灯条最大y差比率
 float light_min_x_diff_ratio_ = 0.6; //灯条最小x差比率
 float light_max_x_diff_ratio_ = 2; //灯条最大x差比率
-float armor_max_aspect_ratio_ = 5; //装甲板最大长宽比
-float armor_min_aspect_ratio_ = 0.1; //装甲板最小长宽比
+float armor_max_aspect_ratio_ = 3; //装甲板最大长宽比5
+float armor_min_aspect_ratio_ = 0.04; //装甲板最小长宽比0.1
 float lendiff_max = 0.5;
 
 //
@@ -94,4 +94,23 @@ void drawArmor(const vector<vector<int>>& armorInfos, const vector<LightDescript
         line(src, Point(leftRect.center.x, leftRect.center.y - leftRect.length / 2), Point(leftRect.center.x, leftRect.center.y + leftRect.length / 2), Scalar(0, 0, 255), 2);
         //line(src, leftRect.center, rightRect.center, Scalar(0, 255, 0), 2);
     }
+}
+
+vector<vector<Point2f>> getArmorVertex(const vector<vector<int>>& armorInfos, const vector<LightDescriptor>& lightInfos) {
+    vector<vector<Point2f>> Armors;
+    for (const auto& armor : armorInfos) {
+        const LightDescriptor& leftRect = lightInfos[armor[0]];
+        const LightDescriptor& rightRect = lightInfos[armor[1]];
+        Point2f upLeft(leftRect.center.x, leftRect.center.y + leftRect.length / 2);
+        Point2f upRight(rightRect.center.x, rightRect.center.y + rightRect.length / 2);
+        Point2f downRight(rightRect.center.x, rightRect.center.y - rightRect.length / 2);
+        Point2f downLeft(leftRect.center.x, leftRect.center.y - leftRect.length / 2);
+        vector<Point2f> armorVertices;
+        armorVertices.emplace_back(upLeft);
+        armorVertices.emplace_back(upRight);
+        armorVertices.emplace_back(downRight);
+        armorVertices.emplace_back(downLeft);
+        Armors.emplace_back(armorVertices);
+    }
+    return Armors; 
 }
