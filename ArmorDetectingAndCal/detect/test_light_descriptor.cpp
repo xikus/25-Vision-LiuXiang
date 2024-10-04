@@ -4,6 +4,7 @@
 #include "detect_light.h"
 #include "match_light.h"
 #include "calculate.h"
+#include<opencv2/calib3d.hpp>
 
 using namespace cv;
 using namespace std;
@@ -33,7 +34,7 @@ int main()
     vector<vector<Point> > lightContours;
     vector<LightDescriptor> lightInfos;
     vector<vector<int>> armorInfos;
-    Mat translation_matrix, rotation_matrix;
+    Mat translation_matrix, rotation_matrix, R;
 
     //读取视频并采样
     string videoPath = "/home/yoda/Downloads/zimiao_test.mp4";
@@ -72,9 +73,11 @@ int main()
         vector<vector<Point2f>> Armors = getArmorVertex(armorInfos, lightInfos);
         for (int i = 0; i < Armors.size(); i++)
         {
-            solvePnP(truepoints_little, Armors[i], intrinsic_matrix, dist_coeffs, rotation_matrix, translation_matrix);
+            solvePnP(truepoints_little, Armors[i], intrinsic_matrix, dist_coeffs, R, translation_matrix);
+            Rodrigues(R, rotation_matrix);
             float dist = getDist(translation_matrix);
             drawDist(showImg, dist, Armors[i][0]);
+            drawNormalVector(showImg, rotation_matrix, Armors[i][0]);
         }
 
         //显示处理后的视频

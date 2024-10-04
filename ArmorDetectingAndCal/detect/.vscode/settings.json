@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.tcc": "cpp",
-    "ratio": "cpp"
+    "ratio": "cpp",
+    "cmath": "cpp"
   }
 }
