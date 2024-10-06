@@ -1,6 +1,6 @@
 # 在此处进行 CMake 设置（最小版本号，项目名）
 cmake_minimum_required(VERSION 3.10)
-
+find_package(OpenCV REQUIRED)
 project(Test)
 
 ####### 以下禁止修改 #######

@@ -218,6 +218,12 @@ M1_LIB_DEPENDS:STATIC=general;A1;
 //Dependencies for the target
 M2_LIB_DEPENDS:STATIC=general;A1;general;A2;
 
+//The directory containing a CMake configuration file for OPENCV.
+OPENCV_DIR:PATH=OPENCV_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for OpenCV.
+OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
+
 //Value Computed by CMake
 Test_BINARY_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build
 
@@ -229,18 +235,6 @@ Test_SOURCE_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake
 
 //kalman filter include directories
 kalman:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include
-
-//kalman filter include directories
-kalman_INCLUDE_DIRS:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include
-
-//Value Computed by CMake
-main_BINARY_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/build
-
-//Value Computed by CMake
-main_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-main_SOURCE_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I
 
 
 ########################
@@ -301,6 +295,8 @@ CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
+//Path to cache edit program executable.
+CMAKE_EDIT_COMMAND:INTERNAL=/usr/bin/cmake-gui
 //Executable file format
 CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
@@ -390,4 +386,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding OpenCV
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr/local][v4.10.0()]
 
