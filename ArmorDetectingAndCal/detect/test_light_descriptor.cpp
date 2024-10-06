@@ -37,7 +37,7 @@ int main()
     Mat translation_matrix, rotation_matrix, R;
 
     //读取视频并采样
-    string videoPath = "/home/yoda/Downloads/zimiao_test.mp4";
+    string videoPath = "/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/zimiao_test.mp4";
     //VideoWriter wrdist_coeffster("/home/yoda/25-Vision-LiuXiang/ArmorDetectingAndCal/detect/test1.mp4", 0x7634706d, 20, Size(1080, 754), true);
     VideoCapture cap(videoPath);
     if (!cap.isOpened())
