@@ -9,6 +9,8 @@ add_subdirectory(common)
 add_executable(server server.cpp)
 add_executable(client client.cpp)
 
+find_package(OpenCV REQUIRED)
+
 #server的链接库
 target_link_libraries(server rmath module1 module2)
 target_include_directories(server PUBLIC ${singleton})

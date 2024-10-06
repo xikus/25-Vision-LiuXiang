@@ -218,9 +218,6 @@ M1_LIB_DEPENDS:STATIC=general;A1;
 //Dependencies for the target
 M2_LIB_DEPENDS:STATIC=general;A1;general;A2;
 
-//The directory containing a CMake configuration file for OPENCV.
-OPENCV_DIR:PATH=OPENCV_DIR-NOTFOUND
-
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
 
@@ -234,7 +231,7 @@ Test_IS_TOP_LEVEL:STATIC=ON
 Test_SOURCE_DIR:STATIC=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I
 
 //kalman filter include directories
-kalman:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include
+kalman:PATH=/home/yoda/25-Vision-LiuXiang/CMakeSkeletonBuilding/CMake_I/common/kalman/include;/usr/local/include/opencv4
 
 
 ########################

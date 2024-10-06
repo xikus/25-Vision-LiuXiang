@@ -1,7 +1,0 @@
-# ninja log v5
-2	1123	1727950862202102076	LightDescriptor/CMakeFiles/LightDescriptor.dir/src/LightDescriptor.cpp.o	cf79eeee7ea2cffa
-1260	1276	1727941137676599141	LightDescriptor/libLightDescriptor.a	55b99bd509ce09c7
-1	1171	1727950862249101952	CMakeFiles/test.dir/test_light_descriptor.cpp.o	6422b0e4530b3aed
-0	1305	1727941137704600665	detect_light/CMakeFiles/detect_light.dir/src/detect_light.cpp.o	72dd0463d281c490
-1305	1319	1727941137719601482	detect_light/libdetect_light.a	aa5386d04372ff31
-1319	1504	1727941137902611446	test	2edf5f2c2688ce1d
