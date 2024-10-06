@@ -1,2 +1,5 @@
 /NumberRecognition/number_recognition_trainset/
 /EmotionRecognition/SentenceAnalysis/
+
+# compile files and directories
+*build
