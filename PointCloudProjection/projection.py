@@ -28,10 +28,11 @@ def read_point_cloud_from_csv(file_path):
     df = pd.read_csv(file_path)
     # 假设CSV文件中的列名为'x', 'y', 'z'，提取对应的列
     points_3d = df[['X', 'Y', 'Z']].to_numpy()
-    return points_3d
+    intensities = df['Reflectivity'].to_numpy()
+    return points_3d, intensities
 
 
-points_3d = read_point_cloud_from_csv(file_path)
+points_3d, intensities = read_point_cloud_from_csv(file_path)
 
 
 def project_points(points_3d, camera_matrix, camera_extrinsic_matrix):
@@ -44,16 +45,24 @@ def project_points(points_3d, camera_matrix, camera_extrinsic_matrix):
     return points_2d
 
 
+def map_intensity_to_color(intensity):
+    # 假设颜色映射为反射率强度到RGB的映射
+    # 这里只是一个示例，您可以根据需要定义自己的映射
+    intensity_normalized = intensity / 152.0  # 152.0是强度的最大值
+    color = np.array([int(152 * intensity_normalized), int(100 * intensity_normalized), int(50 * intensity_normalized)])
+    return color
+
+
 points_2d = project_points(points_3d, camera_matrix, camera_extrinsic_matrix)
 
 
 # 绘制投影点
 image = np.zeros((3036, 4024, 3), dtype=np.uint8)
-for point in points_2d:
+for point, indensity in zip(points_2d, intensities):
     x, y = int(point[0]), int(point[1])
     if 0 <= x < 4024 and 0 <= y < 3036:
-        image[y, x] = (255, 0, 0)
-
+        color = map_intensity_to_color(indensity)
+        image[y, x] = color
 cv2.imshow('Projected Points', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
