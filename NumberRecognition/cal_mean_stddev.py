@@ -15,6 +15,7 @@ dataset = datasets.ImageFolder(root='number_recognition_trainset/gray/trainDataS
 # 创建 DataLoader
 dataloader = DataLoader(dataset, batch_size=64, shuffle=False, num_workers=4)
 
+
 # 定义一个函数来计算均值和标准差
 def compute_mean_std(loader):
     # 初始化求和变量和计数器
@@ -38,6 +39,7 @@ def compute_mean_std(loader):
     std /= total_images_count
 
     return mean, std
+
 
 # 计算均值和标准差
 mean, std = compute_mean_std(dataloader)
