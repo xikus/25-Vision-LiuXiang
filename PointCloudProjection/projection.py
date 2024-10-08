@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
+from tqdm import tqdm
 
 # 相机内参矩阵
 camera_matrix = np.array([
@@ -46,11 +48,22 @@ def project_points(points_3d, camera_matrix, camera_extrinsic_matrix):
 
 
 def map_intensity_to_color(intensity):
-    # 假设颜色映射为反射率强度到RGB的映射
+    # 将反射率强度映射到颜色
+    intensity_normalized = intensity / np.max(intensities)
+    # 选择颜色映射，这里我们使用一个简单的彩虹色映射
+    color_map = plt.get_cmap('hsv')(intensity_normalized)
+    color = np.array(color_map[:3]) * 255  # 转换为RGB颜色
+    color = tuple(int(c) for c in color)
+    return color  # 确保颜色值是整数类型
+
+
+def map_distance_to_size(distance):
+    # 将距离映射到点的大小
     # 这里只是一个示例，您可以根据需要定义自己的映射
-    intensity_normalized = intensity / 152.0  # 152.0是强度的最大值
-    color = np.array([int(152 * intensity_normalized), int(100 * intensity_normalized), int(50 * intensity_normalized)])
-    return color
+    # 确保点的大小在合理的范围内
+    size = int(10 + 5 * distance)  # 假设距离被标准化到0-1
+    return max(1, size)  # 确保点的大小至少为1
+
 
 
 points_2d = project_points(points_3d, camera_matrix, camera_extrinsic_matrix)
@@ -58,11 +71,14 @@ points_2d = project_points(points_3d, camera_matrix, camera_extrinsic_matrix)
 
 # 绘制投影点
 image = np.zeros((3036, 4024, 3), dtype=np.uint8)
-for point, indensity in zip(points_2d, intensities):
+for point, indensity in tqdm(zip(points_2d, intensities)):
     x, y = int(point[0]), int(point[1])
     if 0 <= x < 4024 and 0 <= y < 3036:
         color = map_intensity_to_color(indensity)
-        image[y, x] = color
+        size = map_distance_to_size(np.linalg.norm([point[0], point[1], point[2]]))
+        # image[y, x] = color
+        # print(color)
+        cv2.circle(image, (y, x), size, color, -1)
 cv2.imshow('Projected Points', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
