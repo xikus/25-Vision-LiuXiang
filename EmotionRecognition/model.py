@@ -19,4 +19,3 @@ class BERTClassifier(nn.Module):
 
         # res[1]代表序列的上下文信息'<cls>'，外接全连接层，进行情感分析
         return self.mlp(res[1])
-

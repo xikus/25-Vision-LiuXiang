@@ -49,7 +49,7 @@ def read_file(file_name):
         # 打乱数据集
     random.shuffle(comments_data)
 
-    data = pd.DataFrame(comments_data)
+    data = pd.DataFrame(comments_data)  # 将数据转化为pandas数据类型
 
     same_sentence_num = data.duplicated().sum()  # 统计重复的评论内容个数
 
