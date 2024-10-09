@@ -61,18 +61,8 @@ def map_distance_to_size(distance):
     # 将距离映射到点的大小
     # 这里只是一个示例，您可以根据需要定义自己的映射
     # 确保点的大小在合理的范围内
-    size = int( distance / 140 )  # 假设距离被标准化到0-1    16.618864040601572
+    size = int( distance / 10)  # 假设距离被标准化到0-1    16.618864040601572
     return size  # 确保点的大小至少为1
-
-def getMax(points_3d):
-    max_dist = 0
-    for point in points_3d:
-        dist = (np.linalg.norm([point[0], point[1], point[2]]))
-        if dist > max_dist:
-            max_dist = dist
-    return max_dist
-
-
 
 
 points_2d = project_points(points_3d, camera_matrix, camera_extrinsic_matrix)
@@ -84,7 +74,7 @@ for point, indensity in tqdm(zip(points_2d, intensities)):
     x, y = int(point[0]), int(point[1])
     if 0 <= x < 4024 and 0 <= y < 3036:
         color = map_intensity_to_color(indensity)
-        size = map_distance_to_size(np.linalg.norm([point[0], point[1], point[2]]))
+        size = map_distance_to_size(point[2]) #Point[2]提供了点的深度信息
         cv2.circle(image, (y, x), size, color, -1)
 cv2.imshow('Projected Points', image)
 cv2.waitKey(0)
