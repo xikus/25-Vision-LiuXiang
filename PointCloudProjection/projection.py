@@ -75,7 +75,7 @@ for point, indensity in tqdm(zip(points_2d, intensities)):
     if 0 <= x < 4024 and 0 <= y < 3036:
         color = map_intensity_to_color(indensity)
         size = map_distance_to_size(point[2]) #Point[2]提供了点的深度信息
-        cv2.circle(image, (y, x), size, color, -1)
+        cv2.circle(image, (x,y), size, color, -1)
 cv2.imshow('Projected Points', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
