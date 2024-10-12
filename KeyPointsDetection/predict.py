@@ -22,6 +22,8 @@ def wrap_perspective(image, points):
     warped_image = cv2.warpPerspective(image, M, (80, 80))
 
     return warped_image
+
+
 #
 
 def predict_number(image, points):
@@ -39,6 +41,7 @@ def design_boxes(image, keypoints_sets, labels_set):
         cv2.putText(image, "{}".format(color), points[0], cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
         cv2.putText(image, "{}".format(predicted_number), points[2], cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
     return image
+
 
 # Load a model
 model = YOLO("best.pt")  # pretrained YOLO11n model
@@ -58,7 +61,6 @@ results = model(predict_photos)  # return a list of Results objects
 #     annotator.text(annotated_point, "{}".format(number), txt_color=(0, 255, 0))
 #     cv2.imshow("result", show_img)
 # cv2.waitKey(0)
-
 
 
 # Process results list
