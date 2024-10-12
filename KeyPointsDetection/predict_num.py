@@ -10,7 +10,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # root = ''
 transform = transforms.Compose(
     [transforms.ToPILImage(), transforms.Resize((28, 28)), transforms.ToTensor(),
-     transforms.Normalize((0.3151,), (0.2265,))])
+     transforms.Normalize((0.3000, 0.3020, 0.4224), (0.2261, 0.2384, 0.2214))])
 # predict_dataset = datasets.ImageFolder(root, transform=transform)
 # predict_loader = DataLoader(predict_dataset, batch_size=1, shuffle=False, num_workers=4, pin_memory=True)
 

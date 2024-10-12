@@ -30,32 +30,42 @@ def predict_number(image, points):
     return pred_number
 
 
-def design_boxes(image, keypoints, class_label, predicted_number):
-    points = keypoints.reshape((-1, 1, 2))
-    cv2.polylines(image, [points], isClosed=True, color=(0, 255, 0), thickness=2)
-
-    # 标注class和预测数字
-    cv2.putText(image, class_label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-    cv2.putText(image, predicted_number, (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+def design_boxes(image, keypoints_sets, labels_set):
+    for points, label in zip(keypoints_sets, labels_set):
+        predicted_number = predict_number(image, points)
+        cv2.polylines(image, [points], isClosed=True, color=(0, 255, 0), thickness=2)
+        # 标注class和预测数字
+        color = 'blue' if label == 1.0 else 'red'
+        cv2.putText(image, "{}".format(color), points[0], cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+        cv2.putText(image, "{}".format(predicted_number), points[2], cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
     return image
 
 # Load a model
 model = YOLO("best.pt")  # pretrained YOLO11n model
-predict_photos = ["497.jpg"]
+predict_photos = ['600.jpg']
 # Run batched inference on a list of images
 results = model(predict_photos)  # return a list of Results objects
 
 # Process results list
+# for result in results:
+#     boxes = result.boxes  # Boxes object for bbox outputs
+#     orig_img = result.orig_img  # original image
+#     keypoints = result.keypoints.data.cpu().numpy()  # keypoints object
+#     number = predict_number(orig_img, keypoints)
+#     annotated_point = (int(keypoints[0][3][0]), int(keypoints[0][3][1]))
+#     show_img = result.plot(conf=False, line_width=1, font_size=1.5, kpt_line=True, show=False, labels=True)
+#     annotator = Annotator(show_img, line_width=2, font_size=20, font='Arial.ttf')
+#     annotator.text(annotated_point, "{}".format(number), txt_color=(0, 255, 0))
+#     cv2.imshow("result", show_img)
+# cv2.waitKey(0)
+
+
+
+# Process results list
 for result in results:
-    boxes = result.boxes  # Boxes object for bbox outputs
     orig_img = result.orig_img  # original image
-    keypoints = result.keypoints.data.cpu().numpy()  # keypoints object
-    number = predict_number(orig_img, keypoints)
-    annotated_point = (int(keypoints[0][3][0]), int(keypoints[0][3][1]))
-    show_img = result.plot(conf=False, line_width=1, font_size=1.5, kpt_line=True, show=False, labels=True)
-    annotator = Annotator(show_img, line_width=2, font_size=20, font='Arial.ttf')
-    annotator.text(annotated_point, "{}".format(number), txt_color=(0, 255, 0))
+    labels_set = result.boxes.cls.cpu().numpy()  # class labels
+    keypoints_sets = result.keypoints.data.cpu().numpy().astype(int)  # keypoints object
+    show_img = design_boxes(orig_img, keypoints_sets, labels_set)
     cv2.imshow("result", show_img)
 cv2.waitKey(0)
-
-
