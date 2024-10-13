@@ -1,0 +1,4 @@
+build
+*.png
+*.jpg
+shapenetcore_partanno_segmentation_benchmark_v0
