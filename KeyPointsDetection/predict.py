@@ -4,7 +4,6 @@ import predict_num
 from ultralytics import YOLO
 import cv2
 
-from ultralytics.utils.plotting import Annotator
 
 
 def wrap_perspective(image, points):
