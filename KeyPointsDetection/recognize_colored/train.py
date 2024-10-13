@@ -4,42 +4,44 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import time
 import matplotlib.pyplot as plt
-import model
+import model_num
 
 batch_size = 256
 lr = 0.04
 momentum = 0.5
-epoch = 20
+epoch = 10
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
-transform = transforms.Compose([transforms.Resize((28, 28)), transforms.ToTensor(), transforms.Normalize((0.0294,), (0.0171,))])
+transform = transforms.Compose(
+    [transforms.ToTensor(),
+     transforms.Normalize((0.3000, 0.3020, 0.4224), (0.2261, 0.2384, 0.2214))])
 train_dataset = datasets.ImageFolder(
-    root='/home/yoda/25-Vision-LiuXiang/NumberRecognition/number_recognition_trainset/colored/train',
+    root='/home/yoda/25-Vision-LiuXiang/KeyPointsDetection/Armo/train',
     transform=transform)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
 test_dataset = datasets.ImageFolder(
-    root='/home/yoda/25-Vision-LiuXiang/NumberRecognition/number_recognition_trainset/colored/valid',
+    root='/home/yoda/25-Vision-LiuXiang/KeyPointsDetection/Armo/val',
     transform=transform)
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
 
-model = model.Net()
-model.to(device)
+model_num = model_num.Net()
+model_num.to(device)
 
 # Construct loss and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=momentum)
+optimizer = torch.optim.SGD(model_num.parameters(), lr=lr, momentum=momentum)
 
 losses_per_epoch = []
 
 def train(i):
-    model.train()
+    model_num.train()
     total_loss = 0
     losses = []
     for images, target in train_loader:
         images, target = images.to(device), target.to(device)
-        outputs = model(images)
+        outputs = model_num(images)
         loss = criterion(outputs, target)
         optimizer.zero_grad()
         loss.backward()
@@ -59,12 +61,12 @@ def train(i):
 
 
 def test(i):
-    model.eval()
+    model_num.eval()
     correct, total = 0, 0
     with torch.no_grad():
         for images, target in test_loader:
             images, target = images.to(device), target.to(device)
-            outputs = model(images)
+            outputs = model_num(images)
             _, predicted = torch.max(outputs.data, dim=1)
             total += target.size(0)
             correct += (predicted == target).sum().item()
@@ -96,7 +98,7 @@ plt.show()
 print(f'Average training time per epoch: {sum(train_times) / len(train_times):.2f} seconds')
 
 # Save model
-# torch.save(model.state_dict(), 'number_recognition_model.pth')
+torch.save(model_num.state_dict(), 'number_recognition_model.pth')
 #打出参数量
-total_params = sum(p.numel() for p in model.parameters())
+total_params = sum(p.numel() for p in model_num.parameters())
 print(f'{total_params:,} total parameters.')

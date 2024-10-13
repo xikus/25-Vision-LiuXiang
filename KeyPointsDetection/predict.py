@@ -10,7 +10,7 @@ from ultralytics.utils.plotting import Annotator
 def wrap_perspective(image, points):
     # 定义四个点的新位置，这里我们将其映射到一个80x80的正方形
     # 注意：这四个点的顺序应该与输入的四个点的顺序相同
-    dst_points = np.array([[0, 0], [80, 0], [80, 80], [0, 80]], dtype=np.float32)
+    dst_points = np.array([[0, 0], [0, 80], [80, 80], [80, 0]], dtype=np.float32)
 
     # 获取输入点的坐标
     src_points = np.array(points, dtype=np.float32)
@@ -21,6 +21,7 @@ def wrap_perspective(image, points):
     # 应用透视变换
     warped_image = cv2.warpPerspective(image, M, (80, 80))
 
+    cv2.imshow("warped_image", warped_image)
     return warped_image
 
 
@@ -45,7 +46,7 @@ def design_boxes(image, keypoints_sets, labels_set):
 
 # Load a model
 model = YOLO("best.pt")  # pretrained YOLO11n model
-predict_photos = ['600.jpg']
+predict_photos = ['4PointsModel/images/val/326.jpg']
 # Run batched inference on a list of images
 results = model(predict_photos)  # return a list of Results objects
 

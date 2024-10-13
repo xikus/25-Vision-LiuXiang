@@ -18,7 +18,7 @@ class Net(nn.Module):
         )
         self.fc = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(980, 8),
+            nn.Linear(8000, 6),
 
         )
 
