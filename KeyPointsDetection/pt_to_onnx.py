@@ -3,3 +3,6 @@ import onnx
 
 model = YOLO("best.pt")
 model.export(format="engine", device=0)
+
+
+
