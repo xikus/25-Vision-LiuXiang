@@ -24,6 +24,8 @@ def wrap_perspective(image, points):
     return warped_image
 
 
+
+
 #
 
 def predict_number(image, points):
