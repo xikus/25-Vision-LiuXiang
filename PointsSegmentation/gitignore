@@ -1,5 +1,5 @@
 build
 *.png
 *.jpg
-*.idea
+.idea
 shapenetcore_partanno_segmentation_benchmark_v0
