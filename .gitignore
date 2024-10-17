@@ -4,3 +4,13 @@
 
 # compile files and directories
 *build
+PointsSegmentation/.idea/inspectionProfiles/Project_Default.xml
+PointsSegmentation/.idea/inspectionProfiles/profiles_settings.xml
+PointsSegmentation/.idea/vcs.xml
+PointsSegmentation/.idea/PointsSegmentation.iml
+PointsSegmentation/.idea/modules.xml
+PointsSegmentation/.idea/misc.xml
+PointsSegmentation/.idea/.gitignore
+KeyPointsDetection/trt_deploy/0231.jpg
+KeyPointsDetection/trt_deploy/.vscode/settings.json
+KeyPointsDetection/trt_deploy/.vscode/c_cpp_properties.json
