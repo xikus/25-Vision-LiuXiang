@@ -64,25 +64,25 @@ YOLOv8_pose::YOLOv8_pose(const std::string& engine_file_path)
 {
     // read the engine_file
     std::ifstream file(engine_file_path, std::ios::binary);
-    assert(file.good());
+    assert(file.good() && "Custom0 error message");
     file.seekg(0, std::ios::end);
     auto size = file.tellg();
     file.seekg(0, std::ios::beg);
     char* trtModelStream = new char[size];
-    assert(trtModelStream);
+    assert(trtModelStream && "Custom1 error message");
     file.read(trtModelStream, size);
     file.close();
 
     //initLibNvInferPlugins(&this->gLogger, ""); // This is a function provided by TensorRT to initialize any custom plugins that you might want to use in your neural network inference.
     this->runtime = nvinfer1::createInferRuntime(this->gLogger);
-    assert(this->runtime != nullptr);
+    assert(this->runtime != nullptr && "Custom2 error message");
 
     this->engine = this->runtime->deserializeCudaEngine(trtModelStream, size);
-    assert(this->engine != nullptr);
+    assert(this->engine != nullptr && "Custom3 error message");
     delete[] trtModelStream;
     this->context = this->engine->createExecutionContext();
 
-    assert(this->context != nullptr);
+    assert(this->context != nullptr );
     cudaStreamCreate(&this->stream);
     this->num_bindings = this->engine->getNbBindings();
 
@@ -248,13 +248,11 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
     objs.clear();
     auto num_channels = this->output_bindings[0].dims.d[1];
     auto num_anchors = this->output_bindings[0].dims.d[2];
-
     auto& dw = this->pparam.dw;
     auto& dh = this->pparam.dh;
     auto& width = this->pparam.width;
     auto& height = this->pparam.height;
     auto& ratio = this->pparam.ratio;
-
     std::vector<cv::Rect>           bboxes;
     std::vector<float>              scores;
     std::vector<int>                labels;
@@ -266,15 +264,17 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
     for (int i = 0; i < num_anchors; i++) {
         auto row_ptr = output.row(i).ptr<float>();
         auto bboxes_ptr = row_ptr;
+        // std::cout << *(bboxes_ptr  ) << std::endl;
         auto scores_ptr = row_ptr + 4;
         auto kps_ptr = row_ptr + 5;
-
+        
         float score = *scores_ptr;
         if (score > score_thres) {
             float x = *bboxes_ptr++ - dw;
             float y = *bboxes_ptr++ - dh;
             float w = *bboxes_ptr++;
             float h = *bboxes_ptr;
+            std::cout << "a" << std::endl;
 
             float x0 = clamp((x - 0.5f * w) * ratio, 0.f, width);
             float y0 = clamp((y - 0.5f * h) * ratio, 0.f, height);
