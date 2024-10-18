@@ -63,7 +63,7 @@ int main(int argc, char** argv)
             std::abort();
         }
     }
-    
+
     //the case of image directory
     else if (fs::is_directory(path)) {
         cv::glob(path.string() + "/*.jpg", imagePathList);
@@ -104,21 +104,21 @@ int main(int argc, char** argv)
     }
     else {
         for (auto& p : imagePathList) {
-            // objs.clear();
-            // image = cv::imread(p);
-            // yolov8_pose->copy_from_Mat(image, size);
-            // auto start = std::chrono::system_clock::now();
-            // yolov8_pose->infer();
-            // auto end = std::chrono::system_clock::now();
-            // yolov8_pose->postprocess(objs, score_thres, iou_thres, topk);
-            // yolov8_pose->draw_objects(image, res, objs, SKELETON, KPS_COLORS, LIMB_COLORS);
-            // auto tc = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1000.; //time of inference
-            // printf("cost %2.4lf ms\n", tc);
-            // cv::imshow("result", res);
-            // cv::waitKey(0);
+            objs.clear();
+            image = cv::imread(p);
+            yolov8_pose->copy_from_Mat(image, size);
+            auto start = std::chrono::system_clock::now();
+            yolov8_pose->infer();
+            auto end = std::chrono::system_clock::now();
+            yolov8_pose->postprocess(objs, score_thres, iou_thres, topk);
+            yolov8_pose->draw_objects(image, res, objs, SKELETON, KPS_COLORS, LIMB_COLORS);
+            auto tc = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1000.; //time of inference
+            printf("cost %2.4lf ms\n", tc);
+            cv::imshow("result", res);
+            cv::waitKey(0);
         }
     }
-    // cv::destroyAllWindows();
-    // delete yolov8_pose;
+    cv::destroyAllWindows();
+    delete yolov8_pose;
     return 0;
 }
