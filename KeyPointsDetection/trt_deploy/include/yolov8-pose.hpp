@@ -175,12 +175,12 @@ void YOLOv8_pose::letterbox(const cv::Mat& image, cv::Mat& out, cv::Size& size)
     int   padw = std::round(width * r);
     int   padh = std::round(height * r);
 
-    cv::Mat tmp;
+    cv::Mat tmp1, tmp;
     if ((int)width != padw || (int)height != padh) {
-        cv::resize(image, tmp, cv::Size(padw, padh));
+        cv::resize(image, tmp1, cv::Size(padw, padh));
     }
     else {
-        tmp = image.clone();
+        tmp1 = image.clone();
     }
 
     float dw = inp_w - padw;
@@ -193,7 +193,8 @@ void YOLOv8_pose::letterbox(const cv::Mat& image, cv::Mat& out, cv::Size& size)
     int left = int(std::round(dw - 0.1f));
     int right = int(std::round(dw + 0.1f));
 
-    cv::copyMakeBorder(tmp, tmp, top, bottom, left, right, cv::BORDER_CONSTANT, { 114, 114, 114 });
+    cv::copyMakeBorder(tmp1, tmp, top, bottom, left, right, cv::BORDER_CONSTANT, { 0, 0, 0 });
+
 
     cv::dnn::blobFromImage(tmp, out, 1 / 255.f, cv::Size(), cv::Scalar(0, 0, 0), true, false, CV_32F);
     this->pparam.ratio = 1 / r;
@@ -236,6 +237,9 @@ void YOLOv8_pose::infer()
     this->context->enqueueV2(this->device_ptrs.data(), this->stream, nullptr);
     for (int i = 0; i < this->num_outputs; i++) {
         size_t osize = this->output_bindings[i].size * this->output_bindings[i].dsize;
+        std::cout << "osize:" << osize << std::endl;
+        std::cout << "size:" << this->output_bindings[i].size << std::endl;
+        std::cout << "dsize:" << this->output_bindings[i].dsize << std::endl;
         CHECK(cudaMemcpy(
             this->host_ptrs[i], this->device_ptrs[i + this->num_inputs], osize, cudaMemcpyDeviceToHost));//, this->stream));
     }
@@ -277,15 +281,15 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
         // {
         //     std::cout << *(head_ptr + h * num_anchors + i) << std::endl;
         // }
-        
-        float score = *scores_ptr ;
+
+        float score = *scores_ptr;
         if (score > score_thres) {
             std::cout << "score:" << score << std::endl;
             float x = *bboxes_ptr - dw;
             float y = *(bboxes_ptr + num_anchors) - dh;
             float w = *(bboxes_ptr + 2 * num_anchors) - dw;
             float h = *(bboxes_ptr + 3 * num_anchors) - dh;
-            
+
 
             float x0 = clamp((x - 0.5f * w) * ratio, 0.f, width);
             float y0 = clamp((y - 0.5f * h) * ratio, 0.f, height);
@@ -311,31 +315,41 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
             labels.push_back(color);
             scores.push_back(score);
             kpss.push_back(kps);
+            std::cout << "bboxes:" << bboxes.size() << std::endl;
+
             
+            Object obj;
+            obj.rect = bbox;
+            obj.prob = score;
+            std::cout<<"prob:"<<obj.prob<<std::endl;
+            obj.label = color;
+            obj.kps = kps;
+            objs.push_back(obj);
+
         }
         //std::cout << "anchor:" << i << std::endl;
         //std::cout << std::endl;
     }
-    
-#ifdef BATCHED_NMS
-    cv::dnn::NMSBoxesBatched(bboxes, scores, labels, score_thres, iou_thres, indices);
-#else
-    cv::dnn::NMSBoxes(bboxes, scores, score_thres, iou_thres, indices);
-#endif
-    int cnt = 0;
-    for (auto& i : indices) {
-        if (cnt >= topk) {
-            break;
-        }
-        Object obj;
-        obj.rect = bboxes[i];
-        obj.prob = scores[i];
-        std::cout<<"prob:"<<obj.prob<<std::endl;
-        obj.label = labels[i];
-        obj.kps = kpss[i];
-        objs.push_back(obj);
-        cnt += 1;
-    }
+
+// #ifdef BATCHED_NMS
+//     cv::dnn::NMSBoxesBatched(bboxes, scores, labels, score_thres, iou_thres, indices);
+// #else
+//     cv::dnn::NMSBoxes(bboxes, scores, score_thres, iou_thres, indices);
+// #endif
+//     int cnt = 0;
+//     for (auto& i : indices) {
+//         if (cnt >= topk) {
+//             break;
+//         }
+//         Object obj;
+//         obj.rect = bboxes[i];
+//         obj.prob = scores[i];
+//         std::cout << "prob:" << obj.prob << std::endl;
+//         obj.label = labels[i];
+//         obj.kps = kpss[i];
+//         objs.push_back(obj);
+//         cnt += 1;
+//     }
     // for (size_t i = 0; i < 100; i++)
     // {
     //     Object obj;
@@ -346,7 +360,7 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
     //     obj.kps = kpss[i];
     //     objs.push_back(obj);
     // }
-    
+
     std::cout << "objs size:" << objs.size() << std::endl;
     std::cout << "indices size:" << indices.size() << std::endl;
 }
@@ -360,7 +374,7 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
 {
     res = image.clone();
     const int num_point = 4;
-    
+
     for (auto& obj : objs) {
         int color = obj.label;
         char text[256];
@@ -374,7 +388,7 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
             // cv::rectangle(res, obj.rect, { 255, 0, 0 }, 2);
             sprintf(text, "blue %.1f%%", obj.prob * 100);
         }
-        
+
 
         cv::Size label_size = cv::getTextSize(text, cv::FONT_HERSHEY_SIMPLEX, 0.4, 1, &baseLine);
 
@@ -384,7 +398,7 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
         if (y > res.rows)
             y = res.rows;
 
-        
+
         if (color == 0) {
             cv::rectangle(res, cv::Rect(x, y, label_size.width, label_size.height + baseLine), { 0, 0, 255 }, -1);
         }
@@ -392,7 +406,7 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
         {
             cv::rectangle(res, cv::Rect(x, y, label_size.width, label_size.height + baseLine), { 255, 0, 0 }, -1);
         }
-        
+
         cv::putText(res, text, cv::Point(x, y + label_size.height), cv::FONT_HERSHEY_SIMPLEX, 0.4, { 255, 255, 255 }, 1);
 
         auto& kps = obj.kps;
@@ -406,7 +420,7 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
 
             auto& ske = SKELETON[k];
             int   pos1_x = std::round(kps[ske[0] * 2]);
-            int   pos1_y = std::round(kps[(ske[0]* 2)+ 1]);
+            int   pos1_y = std::round(kps[(ske[0] * 2) + 1]);
 
             int pos2_x = std::round(kps[ske[1] * 2]);
             int pos2_y = std::round(kps[(ske[1] * 2) + 1]);

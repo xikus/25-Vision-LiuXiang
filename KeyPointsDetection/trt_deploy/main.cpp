@@ -47,7 +47,7 @@ int main(int argc, char** argv)
     assert(argc == 3);
 
     auto yolov8_pose = new YOLOv8_pose(engine_file_path);
-    yolov8_pose->make_pipe(true);
+    yolov8_pose->make_pipe(false);
 
     // check the format of the input and prepare the imagePathList or set isVideo to true 
     if (fs::exists(path)) {
@@ -71,9 +71,9 @@ int main(int argc, char** argv)
 
     cv::Mat  res, image;
     cv::Size size = cv::Size{ 640, 640 };
-    int      topk = 100;
-    float    score_thres = 0.25f;
-    float    iou_thres = 0.65f;
+    int      topk = 1000;
+    float    score_thres = 0.2f; //0.2
+    float    iou_thres = 0.6f; // 0.8
 
     std::vector<Object> objs;
 
