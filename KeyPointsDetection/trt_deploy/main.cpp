@@ -122,3 +122,4 @@ int main(int argc, char** argv)
     delete yolov8_pose;
     return 0;
 }
+
