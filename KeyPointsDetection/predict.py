@@ -47,7 +47,7 @@ def design_boxes(image, keypoints_sets, labels_set):
 
 # Load a model
 model = YOLO("best.pt")  # pretrained YOLO11n model
-predict_photos = ['4PointsModel/images/val/326.jpg']
+predict_photos = ['4PointsModel/images/train/0231.jpg']
 # Run batched inference on a list of images
 results = model(predict_photos)  # return a list of Results objects
 

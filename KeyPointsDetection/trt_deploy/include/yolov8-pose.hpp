@@ -288,7 +288,7 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
             float x = *bboxes_ptr - dw;
             float y = *(bboxes_ptr + num_anchors) - 2 * dh;
             float w = *(bboxes_ptr + 2 * num_anchors) - dw;
-            float h = *(bboxes_ptr + 3 * num_anchors) -  dh;
+            float h = *(bboxes_ptr + 3 * num_anchors) - dh;
 
 
             float x0 = clamp((x - 0.5f * w) * ratio, 0.f, width);
@@ -332,7 +332,7 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
         //std::cout << std::endl;
     }
     cv::dnn::NMSBoxesBatched(bboxes, scores, labels, score_thres, iou_thres, indices);
-    
+
     // #ifdef BATCHED_NMS
 //     cv::dnn::NMSBoxesBatched(bboxes, scores, labels, score_thres, iou_thres, indices);
 // #else
@@ -368,7 +368,7 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
     // {
     //     std::cout << "point: " << objs[i].kps[0] <<" "<< objs[i].kps[1]<< std::endl;
     // }
-    
+
     // std::cout << "indices size:" << indices.size() << std::endl;
 }
 
@@ -391,11 +391,11 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
         // std::cout << "color:" << color << std::endl;
         int tep_x = obj.kps[0];
         int tep_y = obj.kps[1];
-        std::cout<<"point:"<<tep_x<<" "<<tep_y<<std::endl;
+        std::cout << "point:" << tep_x << " " << tep_y << std::endl;
         char text[256];
         int      baseLine = 0;
         if (color == 0) {
-            cv::rectangle(res, obj.rect, { 0, 0, 0}, 2);
+            cv::rectangle(res, obj.rect, { 0, 0, 0 }, 2);
             sprintf(text, "red %.1f%%", obj.prob * 100);
         }
         else if (color == 1)

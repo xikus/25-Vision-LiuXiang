@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 
     cv::Mat  res, image;
     cv::Size size = cv::Size{ 640, 640 };
-    int      topk = 1000;
+    int      topk = 100;
     float    score_thres = 0.2f; //0.2
     float    iou_thres = 0.6f; // 0.8
 
