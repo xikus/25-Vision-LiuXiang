@@ -4,6 +4,7 @@
 #include "opencv2/opencv.hpp"
 #include "yolov8-pose.hpp"
 #include <chrono>
+#include "num_recog.cpp"
 
 namespace fs = ghc::filesystem;
 
@@ -113,6 +114,25 @@ int main(int argc, char** argv)
             yolov8_pose->postprocess(objs, score_thres, iou_thres, topk);
             yolov8_pose->draw_objects(image, res, objs, SKELETON, KPS_COLORS, LIMB_COLORS);
             auto tc = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1000.; //time of inference
+
+            //Number Recognition
+            std::vector<cv::Mat> num_image;
+            resize_img(image, num_image, objs);
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             printf("cost %2.4lf ms\n", tc);
             cv::imshow("result", res);
             cv::waitKey(0);
