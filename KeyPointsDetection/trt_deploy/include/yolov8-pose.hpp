@@ -363,7 +363,7 @@ void YOLOv8_pose::postprocess(std::vector<Object>& objs, float score_thres, floa
     //     objs.push_back(obj);
     // }
 
-    std::cout << "objs size:" << objs.size() << std::endl;
+    std::cout << "the number of armors:" << objs.size() << std::endl;
     // for (size_t i = 0; i < objs.size(); i++)
     // {
     //     std::cout << "point: " << objs[i].kps[0] <<" "<< objs[i].kps[1]<< std::endl;
@@ -385,22 +385,22 @@ void YOLOv8_pose::draw_objects(const cv::Mat& image,
     for (auto& obj : objs) {
         int color = obj.label;
         cv::Rect rect = obj.rect;
-        std::cout << "rect:" << rect << std::endl;
-        cv::rectangle(res, rect, { 0, 255, 255 }, 3);
+        std::cout << "rect of armor:" << rect << std::endl;
+        // cv::rectangle(res, rect, { 0, 255, 255 }, 3);
         // cv::circle(res, { rect.x, rect.y }, 3, { 255, 255, 255 }, -1);
         // std::cout << "color:" << color << std::endl;
         int tep_x = obj.kps[0];
         int tep_y = obj.kps[1];
-        std::cout << "point:" << tep_x << " " << tep_y << std::endl;
+        std::cout << "upleft point of armor:" << tep_x << " " << tep_y << std::endl;
         char text[256];
         int      baseLine = 0;
         if (color == 0) {
-            cv::rectangle(res, obj.rect, { 0, 0, 0 }, 2);
+            // cv::rectangle(res, obj.rect, { 0, 0, 0 }, 2);
             sprintf(text, "red %.1f%%", obj.prob * 100);
         }
         else if (color == 1)
         {
-            cv::rectangle(res, obj.rect, { 255, 0, 0 }, 2);
+            // cv::rectangle(res, obj.rect, { 255, 0, 0 }, 2);
             sprintf(text, "blue %.1f%%", obj.prob * 100);
         }
 

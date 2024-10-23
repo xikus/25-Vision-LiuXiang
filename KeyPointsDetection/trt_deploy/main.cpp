@@ -28,7 +28,7 @@ const std::vector<std::vector<unsigned int>> LIMB_COLORS = { {51, 153, 255},
 
 int main(int argc, char** argv)
 {
-    if (argc != 3) {
+    if (argc != 4) {
         fprintf(stderr, "Usage: %s [engine_path] [image_path/image_dir/video_path]\n", argv[0]);
         return -1;
     }
@@ -45,7 +45,7 @@ int main(int argc, char** argv)
     std::vector<std::string> imagePathList;
     bool                     isVideo{ false };
 
-    assert(argc == 3);
+    assert(argc == 4);
 
     auto yolov8_pose = new YOLOv8_pose(engine_file_path);
     yolov8_pose->make_pipe(false);
@@ -116,24 +116,33 @@ int main(int argc, char** argv)
             auto tc = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1000.; //time of inference
 
             //Number Recognition
-            std::vector<cv::Mat> num_image;
-            resize_img(image, num_image, objs);
-            
+            std::vector<cv::Mat> num_images;
+            std::vector<int> indicesMax;
+            resize_img(image, num_images, objs);
+            auto start1 = std::chrono::system_clock::now();
+            for (auto num_image : num_images) {
+                float* output = new float[BATCH_SIZE * 1 * 6];
+                auto start = std::chrono::system_clock::now();
+                recognize(num_image.ptr<float>(), output, argv[3]);
+                auto end = std::chrono::system_clock::now();
+                auto tc = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1000.; //time of number recognition
+                std::cout << "cost for recognizing one number: " << tc << " ms" << std::endl;
+                int indexMax;
+                findMax(output, indexMax);
+                indicesMax.push_back(indexMax);
+                delete[] output;
+            }
+            //num_image,  objs, indicesMax的排序是一致的
+
+            auto end1 = std::chrono::system_clock::now();
+            auto tc1 = (double)std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1).count() / 1000.; //time of number recognition
+
+            draw_num(res, objs, indicesMax);
+
+            printf("cost for finding armor %2.4lf ms\n", tc);
+            printf("cost for recognizing all number %2.4lf ms\n", tc1);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-            printf("cost %2.4lf ms\n", tc);
             cv::imshow("result", res);
             cv::waitKey(0);
         }
