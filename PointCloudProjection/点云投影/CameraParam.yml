@@ -1,0 +1,28 @@
+%YAML:1.0
+---
+cam_exposure: 20000
+cam_gamma: 50
+cam_contrast: 0
+cam_Bgain: 0
+cam_Ggain: 0
+cam_Rgain: 0
+cam_gain: 23
+camera_matrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [4350.62553621579,0,2012.54585508037,0,4376.17813277423,1518.56324575059,0,0,1] #8MM,1200w
+distortion_coefficients: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data: [0,0,0,0,0]
+image_width: 4024 #4024
+image_height: 3036 #3036
+
+
+CameraExtrinsicMat: !!opencv-matrix
+    rows: 4
+    cols: 4
+    dt: d
+    data:  [-0.0191969,-0.999807,-0.00427261,0.015478,0.0178871,0.00392928,-0.999833,-0.0128704,0.999891,0.0121324,-0.00835955,-0.691251,0,0,0,1]
