@@ -42,5 +42,7 @@ NUMBERRECOGNITION
 
   > - 推理请运行`predict.py`.在 *root* 处修改进行推理的图片路径.
 
+- **效果图**
+    > ![img.png](img.png)
 - **总结**
     >在运行模型时发现 *BatchNorm* 模块对提高精度异常有效. 实验发现: 在未使用 *BatchNorm* 时准确率只有16.67%, 而在使用时准确率可达到99.67%.
