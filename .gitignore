@@ -1,6 +1,7 @@
 /NumberRecognition/number_recognition_trainset/
 /EmotionRecognition/SentenceAnalysis/
 /KeyPointsDetection/4PointsModel/
+*.idea
 
 # compile files and directories
 *build
